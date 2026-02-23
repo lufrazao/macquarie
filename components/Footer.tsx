@@ -87,40 +87,18 @@ export function Footer() {
       </section>
       
       <div className="border-t border-border bg-background">
-        <div className="mx-auto max-w-5xl px-6 py-8 lg:px-8 flex flex-wrap items-center justify-between gap-4">
+        <div className="mx-auto max-w-5xl px-6 py-8 lg:px-8 flex flex-col items-center gap-4">
           <div className="flex items-center gap-3">
             <Logo className="h-8 w-8" />
-            <div>
+            <div className="text-center sm:text-left">
               <p className="text-sm font-semibold text-foreground">Fluence</p>
               <p className="text-xs text-muted-foreground">{t.footer.brand_desc}</p>
             </div>
           </div>
           
-          <nav className="flex gap-6 text-sm" aria-label="Footer">
-            <Link
-              href="#thesis"
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {t.footer.links.mission}
-            </Link>
-            <Link
-              href="#how-it-works"
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {t.footer.links.platform}
-            </Link>
-            <Link
-              href="#impact"
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {t.footer.links.impact}
-            </Link>
-          </nav>
-        </div>
-        <div className="mx-auto max-w-5xl px-6 pb-8 lg:px-8">
-            <p className="text-xs text-muted-foreground text-center">
-              © 2026 Fluence. {t.footer.tagline}
-            </p>
+          <p className="text-xs text-muted-foreground text-center mt-4">
+            © 2026 Fluence. {t.footer.tagline}
+          </p>
         </div>
       </div>
     </footer>
