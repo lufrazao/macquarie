@@ -1,49 +1,52 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
-const steps = [
-  {
-    type: "alert",
-    title: "Critical Alert",
-    code: "E7-312",
-    message: "Pump Station 4: Low Pressure. Water ingress detected in Zone B.",
-    action: "Start Diagnosis"
-  },
-  {
-    type: "analysis",
-    title: "Fluence Flow",
-    message: "Analyzing Context: Heavy Rain + Previous Vibration.",
-    detail: "Protocol sourced from Senior Tech A. Silva (ID: 442).",
-    result: "Recommended: Protocol #42 - Impeller Clearance."
-  },
-  {
-    type: "step",
-    number: 1,
-    title: "Isolate Power",
-    message: "Turn off main breaker to Zone B before inspection.",
-    safety: "High Voltage Risk",
-    icon: "power"
-  },
-  {
-    type: "step",
-    number: 2,
-    title: "Inspect Intake",
-    message: "Check intake screen for debris blockage.",
-    tool: "Flashlight",
-    icon: "search"
-  },
-  {
-    type: "capture",
-    title: "Capture Insight",
-    message: "Fix verified. Recording operational data for model update.",
-    detail: "Voice note added: 'Debris was clay, not plastic.'",
-    icon: "mic"
-  }
-];
+import { useLanguage } from "../../context/LanguageContext";
 
 export function MobileSimulation({ className = "" }: { className?: string }) {
+  const { t } = useLanguage();
   const [currentStep, setCurrentStep] = useState(0);
+
+  const steps = [
+    {
+      type: "alert",
+      title: t.solution.mobile.alert.title,
+      code: "E7-312",
+      message: t.solution.mobile.alert.message,
+      action: t.solution.mobile.alert.action
+    },
+    {
+      type: "analysis",
+      title: t.solution.mobile.analysis.title,
+      message: t.solution.mobile.analysis.message,
+      detail: t.solution.mobile.analysis.detail,
+      result: t.solution.mobile.analysis.result
+    },
+    {
+      type: "step",
+      number: 1,
+      title: t.solution.mobile.step1.title,
+      message: t.solution.mobile.step1.message,
+      safety: t.solution.mobile.step1.safety,
+      icon: "power"
+    },
+    {
+      type: "step",
+      number: 2,
+      title: t.solution.mobile.step2.title,
+      message: t.solution.mobile.step2.message,
+      tool: t.solution.mobile.step2.tool,
+      icon: "search"
+    },
+    {
+      type: "capture",
+      title: t.solution.mobile.capture.title,
+      message: t.solution.mobile.capture.message,
+      detail: t.solution.mobile.capture.detail,
+      action: t.solution.mobile.capture.action,
+      icon: "mic"
+    }
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -51,7 +54,7 @@ export function MobileSimulation({ className = "" }: { className?: string }) {
     }, 3500); // Change step every 3.5 seconds
 
     return () => clearInterval(timer);
-  }, []);
+  }, [steps.length]);
 
   const step = steps[currentStep];
 
@@ -105,13 +108,6 @@ export function MobileSimulation({ className = "" }: { className?: string }) {
                       {step.number}
                     </div>
                   )}
-                  {step.type === 'success' && (
-                    <div className="h-10 w-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
-                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                  )}
                   {step.type === 'analysis' && (
                     <div className="h-8 w-8 rounded-full bg-accent/20 flex items-center justify-center text-accent animate-spin-slow">
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -139,6 +135,7 @@ export function MobileSimulation({ className = "" }: { className?: string }) {
                     {step.detail}
                   </div>
                 )}
+
                 {step.safety && (
                   <div className="mt-4 flex items-center gap-2 text-xs text-orange-400 bg-orange-400/10 p-2 rounded-lg">
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -154,20 +151,12 @@ export function MobileSimulation({ className = "" }: { className?: string }) {
                   </div>
                 )}
 
-                {step.stat && (
-                  <div className="mt-4 text-xs font-medium text-green-400">
-                    Performance: {step.stat}
-                  </div>
-                )}
-
               </div>
 
               {/* Bottom Action Area */}
               <div className="mt-6">
                 <div className="h-12 w-full rounded-xl bg-accent text-accent-foreground font-semibold text-sm flex items-center justify-center shadow-lg shadow-accent/20">
-                  {step.type === 'alert' ? 'Start Diagnostics' : 
-                   step.type === 'capture' ? 'Submit Insight' : 
-                   'Confirm & Continue'}
+                  {step.action || (step.type === 'alert' ? 'Start Diagnostics' : 'Confirm & Continue')}
                 </div>
               </div>
 

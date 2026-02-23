@@ -1,11 +1,13 @@
 import { SkipLink } from "@/components/SkipLink";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { WhoItsFor } from "@/components/WhoItsFor";
+import { Problem } from "@/components/Problem";
 import { Solution } from "@/components/Solution";
 import { HowItWorks } from "@/components/HowItWorks";
+import { WhyNow } from "@/components/WhyNow";
 import { UseCases } from "@/components/UseCases";
-import { FAQ } from "@/components/FAQ";
+import { Progress } from "@/components/Progress";
+import { Credibility } from "@/components/Credibility";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -15,11 +17,13 @@ export default function Home() {
       <Header />
       <main id="main" className="min-h-screen">
         <Hero />
-        <WhoItsFor />
+        <Problem />
         <Solution />
         <HowItWorks />
+        <WhyNow />
         <UseCases />
-        <FAQ />
+        <Progress />
+        <Credibility />
         <Footer />
       </main>
     </>

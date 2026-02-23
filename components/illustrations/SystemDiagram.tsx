@@ -1,4 +1,10 @@
+"use client";
+
+import { useLanguage } from "../../context/LanguageContext";
+
 export function SystemDiagram({ className = "" }: { className?: string }) {
+  const { t } = useLanguage();
+
   return (
     <svg
       className={className}
@@ -69,7 +75,7 @@ export function SystemDiagram({ className = "" }: { className?: string }) {
         <line x1="0" y1="-25" x2="0" y2="-15" stroke="#2dd4bf" strokeWidth="2" strokeLinecap="round" />
         <line x1="10" y1="-25" x2="5" y2="-15" stroke="#2dd4bf" strokeWidth="2" strokeLinecap="round" />
 
-        <text x="0" y="60" textAnchor="middle" fill="#e2e8f0" fontSize="14" fontWeight="600">Knowledge Capture</text>
+        <text x="0" y="60" textAnchor="middle" fill="#e2e8f0" fontSize="14" fontWeight="600">{t.howItWorks.steps[0].label}</text>
       </g>
 
       {/* --- NODE 2: CONTEXTUAL REASONING (Bottom Right) --- */}
@@ -85,7 +91,7 @@ export function SystemDiagram({ className = "" }: { className?: string }) {
         <line x1="0" y1="-10" x2="10" y2="5" stroke="#e2e8f0" strokeWidth="1.5" />
         <line x1="-10" y1="5" x2="10" y2="5" stroke="#e2e8f0" strokeWidth="1.5" />
 
-        <text x="0" y="60" textAnchor="middle" fill="#e2e8f0" fontSize="14" fontWeight="600">Contextual Reasoning</text>
+        <text x="0" y="60" textAnchor="middle" fill="#e2e8f0" fontSize="14" fontWeight="600">{t.howItWorks.steps[1].label}</text>
       </g>
 
       {/* --- NODE 3: CONTINUOUS LEARNING (Bottom Left) --- */}
@@ -97,7 +103,7 @@ export function SystemDiagram({ className = "" }: { className?: string }) {
         <path d="M -15 10 L -5 0 L 5 10 L 15 -5" stroke="#e2e8f0" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M 15 -5 L 10 -5 M 15 -5 L 15 0" stroke="#e2e8f0" strokeWidth="2" strokeLinecap="round" />
 
-        <text x="0" y="60" textAnchor="middle" fill="#e2e8f0" fontSize="14" fontWeight="600">Continuous Learning</text>
+        <text x="0" y="60" textAnchor="middle" fill="#e2e8f0" fontSize="14" fontWeight="600">{t.howItWorks.steps[2].label}</text>
       </g>
 
       {/* --- CENTRAL CORE --- */}

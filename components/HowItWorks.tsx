@@ -2,26 +2,11 @@
 
 import { Section, SectionTitle, SectionLead } from "./Section";
 import { SystemDiagram } from "./illustrations/SystemDiagram";
-
-const steps = [
-  {
-    label: "Knowledge Capture",
-    desc: "We work with your senior technicians to document their diagnostic process—capturing not just the steps, but the reasoning behind each decision.",
-    detail: "Sources: Field reports, photos, video walkthroughs, repair logs, and direct shadowing"
-  },
-  {
-    label: "Contextual Reasoning",
-    desc: "When a crew encounters a problem, Fluence analyzes the situation (symptoms, equipment type, weather) and matches it to relevant expert protocols to deliver guided execution.",
-    detail: "Inputs: Error codes, photos, location data, equipment history, environmental conditions"
-  },
-  {
-    label: "Continuous Learning",
-    desc: "Records what each crew member has successfully completed, identifies skill gaps, and updates the knowledge base with field insights.",
-    detail: "Outcomes: Individual skill profiles, team readiness metrics, refined protocols"
-  }
-];
+import { useLanguage } from "../context/LanguageContext";
 
 export function HowItWorks() {
+  const { t } = useLanguage();
+
   return (
     <Section id="how-it-works" className="relative">
       {/* Background elements */}
@@ -29,9 +14,9 @@ export function HowItWorks() {
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10" />
 
       <div className="text-center mb-16">
-        <SectionTitle>Fluence Flow</SectionTitle>
+        <SectionTitle>{t.howItWorks.title}</SectionTitle>
         <SectionLead className="mx-auto">
-          A closed-loop system that captures expertise, delivers guidance, and continuously improves both crew capability and organizational knowledge.
+          {t.howItWorks.lead}
         </SectionLead>
       </div>
 
@@ -41,7 +26,7 @@ export function HowItWorks() {
       </div>
 
       <div className="mt-16 grid gap-8 lg:grid-cols-3">
-        {steps.map((step, i) => (
+        {t.howItWorks.steps.map((step, i) => (
           <div
             key={step.label}
             className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-8 transition-all hover:border-accent/30 hover:shadow-lg flex flex-col"

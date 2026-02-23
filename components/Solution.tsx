@@ -1,16 +1,18 @@
+"use client";
+
 import { Section, SectionTitle, SectionLead } from "./Section";
 import { FlowDiagram } from "./illustrations/FlowDiagram";
 import { MobileSimulation } from "./illustrations/MobileSimulation";
-
-const definition =
-  "Fluence is an AI copilot that captures expert knowledge and delivers real-time, contextual guidance to field crews—transforming decades of experience into actionable steps for any technician, regardless of skill level.";
+import { useLanguage } from "../context/LanguageContext";
 
 export function Solution() {
+  const { t } = useLanguage();
+
   return (
     <Section id="solution">
-      <SectionTitle>Your Expert's Brain, In Every Technician's Pocket</SectionTitle>
+      <SectionTitle>{t.solution.title}</SectionTitle>
       <SectionLead>
-        Fluence captures expert knowledge and delivers it as real-time guidance—so every technician can solve complex problems like a veteran.
+        {t.solution.lead}
       </SectionLead>
 
       {/* Visual flow diagram */}
@@ -88,8 +90,8 @@ export function Solution() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
             </div>
-            <h4 className="font-semibold text-foreground">Not a static manual</h4>
-            <p className="text-sm text-muted-foreground">Adapts to each situation and technician's skill level</p>
+            <h4 className="font-semibold text-foreground">{t.solution.features.manual.title}</h4>
+            <p className="text-sm text-muted-foreground">{t.solution.features.manual.desc}</p>
           </div>
 
           <div className="rounded-2xl border border-border bg-surface p-6 text-center space-y-3 hover:border-accent/30 transition-all">
@@ -98,8 +100,8 @@ export function Solution() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <h4 className="font-semibold text-foreground">Not a chatbot</h4>
-            <p className="text-sm text-muted-foreground">Structured, verified protocols from your experts</p>
+            <h4 className="font-semibold text-foreground">{t.solution.features.chatbot.title}</h4>
+            <p className="text-sm text-muted-foreground">{t.solution.features.chatbot.desc}</p>
           </div>
 
           <div className="rounded-2xl border border-border bg-surface p-6 text-center space-y-3 hover:border-accent/30 transition-all">
@@ -108,8 +110,8 @@ export function Solution() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <h4 className="font-semibold text-foreground">Not a training course</h4>
-            <p className="text-sm text-muted-foreground">Embedded in daily work, learning by doing</p>
+            <h4 className="font-semibold text-foreground">{t.solution.features.course.title}</h4>
+            <p className="text-sm text-muted-foreground">{t.solution.features.course.desc}</p>
           </div>
         </div>
       </div>

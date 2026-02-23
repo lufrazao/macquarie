@@ -1,4 +1,10 @@
+"use client";
+
+import { useLanguage } from "../../context/LanguageContext";
+
 export function FlowDiagram({ className = "" }: { className?: string }) {
+  const { t } = useLanguage();
+
   return (
     <svg
       className={className}
@@ -35,8 +41,8 @@ export function FlowDiagram({ className = "" }: { className?: string }) {
         <line x1="-10" y1="20" x2="0" y2="20" stroke="#2dd4bf" strokeWidth="2" />
         
         {/* Label */}
-        <text x="0" y="85" textAnchor="middle" fill="#e2e8f0" fontSize="14" fontWeight="600">Expert Knowledge</text>
-        <text x="0" y="105" textAnchor="middle" fill="#94a3b8" fontSize="12">Manuals & Experience</text>
+        <text x="0" y="85" textAnchor="middle" fill="#e2e8f0" fontSize="14" fontWeight="600">{t.hero.diagram.expert}</text>
+        <text x="0" y="105" textAnchor="middle" fill="#94a3b8" fontSize="12">{t.hero.diagram.manuals}</text>
       </g>
 
       {/* --- 2. FLUENCE CORE (CENTER) --- */}
@@ -79,8 +85,8 @@ export function FlowDiagram({ className = "" }: { className?: string }) {
         <line x1="-15" y1="10" x2="15" y2="10" stroke="#2dd4bf" strokeWidth="1" opacity="0.6" />
 
         {/* Label */}
-        <text x="0" y="110" textAnchor="middle" fill="#2dd4bf" fontSize="16" fontWeight="700" filter="url(#glow-strong)">FLUENCE COPILOT</text>
-        <text x="0" y="130" textAnchor="middle" fill="#94a3b8" fontSize="12">Contextual Reasoning</text>
+        <text x="0" y="110" textAnchor="middle" fill="#2dd4bf" fontSize="16" fontWeight="700" filter="url(#glow-strong)">{t.hero.diagram.ai}</text>
+        <text x="0" y="130" textAnchor="middle" fill="#94a3b8" fontSize="12">{t.hero.diagram.reasoning}</text>
       </g>
 
       {/* --- 3. FIELD CREW (RIGHT) --- */}
@@ -95,8 +101,8 @@ export function FlowDiagram({ className = "" }: { className?: string }) {
         <line x1="-10" y1="15" x2="10" y2="15" stroke="#14b8a6" strokeWidth="2" />
         
         {/* Label */}
-        <text x="0" y="85" textAnchor="middle" fill="#e2e8f0" fontSize="14" fontWeight="600">Field Crew</text>
-        <text x="0" y="105" textAnchor="middle" fill="#94a3b8" fontSize="12">Guided Restoration</text>
+        <text x="0" y="85" textAnchor="middle" fill="#e2e8f0" fontSize="14" fontWeight="600">{t.hero.diagram.crew}</text>
+        <text x="0" y="105" textAnchor="middle" fill="#94a3b8" fontSize="12">{t.hero.diagram.guidance}</text>
       </g>
 
       {/* --- CONNECTIONS --- */}
@@ -121,7 +127,7 @@ export function FlowDiagram({ className = "" }: { className?: string }) {
       {/* Feedback arrows */}
       <polygon points="400,395 390,400 400,405" fill="#2dd4bf" transform="rotate(180 400 400)" />
       
-      <text x="400" y="430" textAnchor="middle" fill="#2dd4bf" fontSize="12" letterSpacing="1" opacity="0.8">CONTINUOUS LEARNING LOOP</text>
+      <text x="400" y="430" textAnchor="middle" fill="#2dd4bf" fontSize="12" letterSpacing="1" opacity="0.8">{t.hero.diagram.loop_bottom}</text>
 
       {/* --- FIELD INSIGHTS (Top Loop) --- */}
       <path 
@@ -135,7 +141,7 @@ export function FlowDiagram({ className = "" }: { className?: string }) {
       {/* Feedback arrows */}
       <polygon points="410,105 400,100 410,95" fill="#14b8a6" />
       
-      <text x="400" y="80" textAnchor="middle" fill="#14b8a6" fontSize="12" letterSpacing="1" opacity="0.8">FIELD INSIGHTS UPDATE KNOWLEDGE</text>
+      <text x="400" y="80" textAnchor="middle" fill="#14b8a6" fontSize="12" letterSpacing="1" opacity="0.8">{t.hero.diagram.loop_top}</text>
 
       {/* --- ANIMATED PARTICLES --- */}
       <circle cx="200" cy="250" r="3" fill="#2dd4bf">

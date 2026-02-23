@@ -1,118 +1,133 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
+import { useLanguage } from "../context/LanguageContext";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
 
-const navigation = [
-  { name: "Who It's For", href: "#who" },
-  { name: "Solution", href: "#solution" },
-  { name: "How It Works", href: "#how-it-works" },
-  { name: "Benefits", href: "#impact" },
-  { name: "FAQ", href: "#faq" },
-];
-
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { t } = useLanguage();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-lg"
-          : "bg-transparent"
-      }`}
-    >
-      <nav className="mx-auto max-w-7xl px-6 lg:px-8" aria-label="Main navigation">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center gap-3 group">
-              <Logo className="h-8 w-8" />
-              <span className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors">
-                Fluence
-              </span>
-            </Link>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex lg:items-center lg:gap-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full" />
-              </Link>
-            ))}
-            <Link
-              href="#contact"
-              className="ml-4 inline-flex items-center justify-center rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground transition-all hover:bg-accent-hover hover:shadow-[0_0_20px_-10px_var(--color-accent)]"
-            >
-              Get in touch
-            </Link>
-          </div>
-
-          {/* Mobile menu button */}
+    <header className="fixed top-0 left-0 right-0 z-40 border-b border-border/50 bg-background/80 backdrop-blur-md">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div className="flex lg:flex-1">
+          <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
+            <span className="sr-only">Fluence</span>
+            <Logo className="h-8 w-8 text-accent" />
+            <span className="font-semibold text-foreground">Fluence</span>
+          </Link>
+        </div>
+        
+        {/* Mobile menu button */}
+        <div className="flex lg:hidden">
           <button
             type="button"
-            className="lg:hidden inline-flex items-center justify-center rounded-lg p-2 text-muted-foreground hover:text-foreground hover:bg-surface transition-colors"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-expanded={mobileMenuOpen}
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-muted-foreground"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            <span className="sr-only">Toggle menu</span>
-            {mobileMenuOpen ? (
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
+            <span className="sr-only">Open main menu</span>
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        <div
-          className={`lg:hidden transition-all duration-300 ease-in-out ${
-            mobileMenuOpen
-              ? "max-h-96 opacity-100 pb-6"
-              : "max-h-0 opacity-0 overflow-hidden"
-          }`}
-        >
-          <div className="space-y-1 pt-4 border-t border-border">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="block px-4 py-3 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-surface rounded-lg transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <Link
-              href="#contact"
-              className="block mt-4 px-4 py-3 text-center text-base font-semibold text-accent-foreground bg-accent rounded-lg hover:bg-accent-hover transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Get in touch
-            </Link>
-          </div>
+        {/* Desktop menu */}
+        <div className="hidden lg:flex lg:gap-x-12">
+          <Link href="#problem" className="text-sm font-semibold leading-6 text-foreground hover:text-accent transition-colors">
+            {t.nav.mission}
+          </Link>
+          <Link href="#solution" className="text-sm font-semibold leading-6 text-foreground hover:text-accent transition-colors">
+            {t.nav.platform}
+          </Link>
+          <Link href="#impact" className="text-sm font-semibold leading-6 text-foreground hover:text-accent transition-colors">
+            {t.nav.impact}
+          </Link>
+          <Link href="#team" className="text-sm font-semibold leading-6 text-foreground hover:text-accent transition-colors">
+            {t.nav.team}
+          </Link>
+        </div>
+
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4 items-center">
+          {/* Language Switcher is handled by global layout/component, but maybe put it here? */}
+          {/* Actually the layout has a fixed LanguageSwitcher, so we don't need it here. */}
+          
+          <Link href="#contact" className="text-sm font-semibold leading-6 text-foreground hover:text-accent transition-colors">
+            {t.nav.contact} <span aria-hidden="true">&rarr;</span>
+          </Link>
         </div>
       </nav>
+
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <div className="lg:hidden" role="dialog" aria-modal="true">
+          <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)} />
+          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-background px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
+            <div className="flex items-center justify-between">
+              <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
+                 <Logo className="h-8 w-8 text-accent" />
+                 <span className="font-semibold text-foreground">Fluence</span>
+              </Link>
+              <button
+                type="button"
+                className="-m-2.5 rounded-md p-2.5 text-muted-foreground"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span className="sr-only">Close menu</span>
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="mt-6 flow-root">
+              <div className="-my-6 divide-y divide-white/10">
+                <div className="space-y-2 py-6">
+                  <Link
+                    href="#problem"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-foreground hover:bg-accent/10"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {t.nav.mission}
+                  </Link>
+                  <Link
+                    href="#solution"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-foreground hover:bg-accent/10"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {t.nav.platform}
+                  </Link>
+                  <Link
+                    href="#impact"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-foreground hover:bg-accent/10"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {t.nav.impact}
+                  </Link>
+                  <Link
+                    href="#team"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-foreground hover:bg-accent/10"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {t.nav.team}
+                  </Link>
+                </div>
+                <div className="py-6">
+                  <Link
+                    href="#contact"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-foreground hover:bg-accent/10"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {t.nav.contact}
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

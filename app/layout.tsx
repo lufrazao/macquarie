@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { LanguageProvider } from "@/context/LanguageContext";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import "./globals.css";
 
 const inter = Inter({
@@ -15,28 +17,28 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Behavior, translated into signals | Behavioral Inference Layer",
+  title: "Fluence | Workforce Resilience for Critical Infrastructure",
   description:
-    "Infrastructure that translates human behavior into structured signals software can reason about. Intent, decision style, cognitive load—exposed via API so your product adapts to humans.",
+    "AI copilot that trains water and sanitation crews in Brazil to restore infrastructure faster after climate-driven failures.",
   keywords: [
-    "behavioral inference",
-    "decision intelligence",
-    "personalization",
-    "intent signals",
-    "ML infrastructure",
-    "behavioral API",
+    "workforce resilience",
+    "climate adaptation",
+    "sanitation infrastructure",
+    "brazil water",
+    "AI copilot",
+    "operational intelligence",
   ],
-  authors: [{ name: "Behavioral Inference" }],
+  authors: [{ name: "Fluence" }],
   openGraph: {
-    title: "Behavior, translated into signals",
+    title: "Fluence | Workforce Resilience",
     description:
-      "Infrastructure that translates human behavior into structured signals software can reason about.",
+      "Operational guidance for crews restoring Brazil’s critical water infrastructure.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Behavior, translated into signals",
-    description: "Human behavior → structured signals your software can reason about.",
+    title: "Fluence | Workforce Resilience",
+    description: "Operational guidance for crews restoring Brazil’s critical water infrastructure.",
   },
   robots: "index, follow",
 };
@@ -47,9 +49,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.variable} font-sans min-h-screen`}>
-        {children}
+    <html lang="pt">
+      <body className={`${inter.variable} font-sans min-h-screen bg-background text-foreground`}>
+        <LanguageProvider>
+          <LanguageSwitcher />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );
