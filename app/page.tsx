@@ -7,7 +7,6 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { WhyNow } from "@/components/WhyNow";
 import { UseCases } from "@/components/UseCases";
 import { Progress } from "@/components/Progress";
-import { Credibility } from "@/components/Credibility";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -23,7 +22,6 @@ export default function Home() {
         <WhyNow />
         <UseCases />
         <Progress />
-        <Credibility />
         <Footer />
       </main>
     </>

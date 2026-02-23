@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "../context/LanguageContext";
-import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
 
 export function Header() {
@@ -46,15 +45,9 @@ export function Header() {
           <Link href="#impact" className="text-sm font-semibold leading-6 text-foreground hover:text-accent transition-colors">
             {t.nav.impact}
           </Link>
-          <Link href="#team" className="text-sm font-semibold leading-6 text-foreground hover:text-accent transition-colors">
-            {t.nav.team}
-          </Link>
         </div>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4 items-center">
-          {/* Language Switcher is handled by global layout/component, but maybe put it here? */}
-          {/* Actually the layout has a fixed LanguageSwitcher, so we don't need it here. */}
-          
           <Link href="#contact" className="text-sm font-semibold leading-6 text-foreground hover:text-accent transition-colors">
             {t.nav.contact} <span aria-hidden="true">&rarr;</span>
           </Link>
@@ -105,13 +98,6 @@ export function Header() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {t.nav.impact}
-                  </Link>
-                  <Link
-                    href="#team"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-foreground hover:bg-accent/10"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {t.nav.team}
                   </Link>
                 </div>
                 <div className="py-6">

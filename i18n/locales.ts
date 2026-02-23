@@ -6,7 +6,6 @@ export const translations = {
       mission: "Missão",
       platform: "Plataforma",
       impact: "Impacto",
-      team: "Equipe",
       contact: "Contato",
     },
     hero: {
@@ -150,11 +149,6 @@ export const translations = {
       value_opex: "Reduz custos de retrabalho, horas extras e treinamento.",
       value_capex: "Estende a vida útil dos ativos através de protocolos de manutenção corretos."
     },
-    founder: {
-      title: "Sobre o Fundador",
-      quote: "\"Estamos construindo o Fluence para garantir que o conhecimento necessário para sustentar os sistemas mais críticos da civilização nunca seja perdido.\"",
-      role: "MSc Robótica (Stanford) | Ex-Inovação AB-InBev"
-    },
     footer: {
       title: "Garanta o futuro da infraestrutura hídrica do Brasil.",
       desc: "Procuramos parceiros comprometidos com resiliência operacional e desenvolvimento da força de trabalho.",
@@ -177,7 +171,6 @@ export const translations = {
       mission: "Mission",
       platform: "Platform",
       impact: "Impact",
-      team: "Team",
       contact: "Contact",
     },
     hero: {
@@ -321,11 +314,6 @@ export const translations = {
       value_opex: "Reduces rework, overtime, and training costs.",
       value_capex: "Extends asset lifespan through correct maintenance protocols."
     },
-    founder: {
-      title: "About the Founder",
-      quote: "\"We are building Fluence to ensure that the knowledge required to sustain civilization’s most critical systems is never lost.\"",
-      role: "MSc Robotics (Stanford) | Ex-AB-InBev Innovation"
-    },
     footer: {
       title: "Secure the future of Brazil’s water infrastructure.",
       desc: "We are looking for partners committed to operational resilience and workforce development.",
@@ -333,14 +321,14 @@ export const translations = {
       email_label: "Email",
       org_label: "Organization / Role",
       cta: "Contact our team",
-      sending: "Sending...",
+      sending: "Enviando...",
       links: {
-        mission: "Mission",
-        platform: "Platform",
+        mission: "Missão",
+        platform: "Plataforma",
         impact: "Impact"
       },
-      tagline: "Fluence. Workforce Resilience.",
-      brand_desc: "Helping infrastructure crews solve complex problems faster"
+      tagline: "Fluence. Resiliência da Força de Trabalho.",
+      brand_desc: "Ajudando equipes de infraestrutura a resolver problemas complexos mais rapidamente"
     }
   }
 };
