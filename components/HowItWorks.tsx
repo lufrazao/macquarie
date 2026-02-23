@@ -1,5 +1,7 @@
+"use client";
+
 import { Section, SectionTitle, SectionLead } from "./Section";
-import { HowItWorksDiagram } from "./HowItWorksDiagram";
+import { SystemDiagram } from "./illustrations/SystemDiagram";
 
 const steps = [
   {
@@ -26,14 +28,21 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <Section id="how-it-works">
-      <SectionTitle>The Fluence System</SectionTitle>
-      <SectionLead>
-        A closed-loop system that captures expertise, delivers guidance, and continuously improves both crew capability and organizational knowledge.
-      </SectionLead>
+    <Section id="how-it-works" className="relative">
+      {/* Background elements */}
+      <div className="absolute inset-0 -z-10 dot-pattern opacity-20" />
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10" />
 
-      <div className="mt-12">
-        <HowItWorksDiagram steps={steps.map(s => ({ label: s.label, desc: s.desc }))} />
+      <div className="text-center mb-16">
+        <SectionTitle>The Fluence System</SectionTitle>
+        <SectionLead className="mx-auto">
+          A closed-loop system that captures expertise, delivers guidance, and continuously improves both crew capability and organizational knowledge.
+        </SectionLead>
+      </div>
+
+      {/* Central system diagram */}
+      <div className="mt-12 mb-16 max-w-2xl mx-auto">
+        <SystemDiagram className="w-full h-auto" />
       </div>
 
       <div className="mt-16 grid gap-8 lg:grid-cols-2">
@@ -63,57 +72,6 @@ export function HowItWorks() {
             </div>
           </div>
         ))}
-      </div>
-
-      {/* Technical differentiators */}
-      <div className="mt-16 rounded-2xl border border-border bg-gradient-to-br from-surface to-transparent p-8 sm:p-10">
-        <h3 className="text-xl font-semibold text-foreground mb-6">Technical Approach</h3>
-        <div className="grid gap-6 sm:grid-cols-2">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <svg className="h-5 w-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span className="font-medium text-foreground">Domain-Specific AI</span>
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Trained specifically on water/sanitation infrastructure—not generic repair manuals
-            </p>
-          </div>
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <svg className="h-5 w-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span className="font-medium text-foreground">Verified Protocols</span>
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              All guidance reviewed by senior engineers—no hallucinations or improvised advice
-            </p>
-          </div>
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <svg className="h-5 w-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span className="font-medium text-foreground">Offline-First</span>
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Works in remote locations without internet connectivity—syncs when connection returns
-            </p>
-          </div>
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <svg className="h-5 w-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span className="font-medium text-foreground">Continuous Improvement</span>
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Every repair adds to the knowledge base—system gets smarter with each use
-            </p>
-          </div>
-        </div>
       </div>
     </Section>
   );

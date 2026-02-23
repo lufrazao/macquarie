@@ -146,40 +146,6 @@ export function UseCases() {
           ))}
         </div>
       </div>
-
-      {/* Community impact */}
-      <div className="mt-20 rounded-2xl border-l-4 border-accent bg-surface p-8 sm:p-10">
-        <h3 className="text-xl font-semibold text-foreground mb-4">Community Resilience</h3>
-        <p className="text-muted-foreground leading-relaxed mb-6">
-          Faster restoration times directly translate to improved public health outcomes. When water service is restored in hours instead of days, vulnerable communities face lower risks of waterborne disease, economic disruption, and infrastructure degradation.
-        </p>
-        <div className="grid gap-4 sm:grid-cols-2 text-sm">
-          <div className="flex items-start gap-2">
-            <svg className="h-5 w-5 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            <span className="text-muted-foreground">Reduced public health risks during outages</span>
-          </div>
-          <div className="flex items-start gap-2">
-            <svg className="h-5 w-5 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            <span className="text-muted-foreground">Lower economic impact on local businesses</span>
-          </div>
-          <div className="flex items-start gap-2">
-            <svg className="h-5 w-5 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            <span className="text-muted-foreground">Improved trust in essential services</span>
-          </div>
-          <div className="flex items-start gap-2">
-            <svg className="h-5 w-5 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            <span className="text-muted-foreground">Better climate adaptation for vulnerable populations</span>
-          </div>
-        </div>
-      </div>
     </Section>
   );
 }

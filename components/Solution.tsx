@@ -1,5 +1,4 @@
 import { Section, SectionTitle, SectionLead } from "./Section";
-import { CopyButton } from "./CopyButton";
 
 const definition =
   "Fluence is an AI copilot that captures expert knowledge and delivers real-time, contextual guidance to field crews—transforming decades of experience into actionable steps for any technician, regardless of skill level.";
@@ -121,10 +120,6 @@ export function Solution() {
               </svg>
               <span className="text-muted-foreground">Not a training course—embedded in daily work</span>
             </div>
-          </div>
-          <div className="mt-8 flex items-center justify-between border-t border-border pt-6">
-            <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Share</span>
-            <CopyButton text={definition} label="Copy" className="bg-background border-border hover:border-muted-foreground/50 text-xs" />
           </div>
         </div>
       </div>

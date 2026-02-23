@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import Link from "next/link";
+import { Logo } from "./Logo";
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -12,9 +12,21 @@ export function Footer() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`Fluence Inquiry: ${interest || 'General'}`);
+    const body = encodeURIComponent(
+      `Email: ${email}\n` +
+      `Organization: ${organization || 'Not provided'}\n` +
+      `Interest: ${interest || 'Not specified'}\n\n` +
+      `Please reach out to discuss Fluence.`
+    );
+
+    // Open mailto link
+    window.location.href = `mailto:l@lfrazao.com?subject=${subject}&body=${body}`;
+
+    // Show success message
     startTransition(() => {
-      // Dummy handler - replace with actual API call
-      console.log("Request access:", { email, organization, interest });
       setSubmitted(true);
       setTimeout(() => {
         setEmail("");
@@ -34,25 +46,31 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-5">
           <div className="lg:col-span-3">
             <h2 id="contact-heading" className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Ready to build workforce resilience?
+              Want to see Fluence in action?
             </h2>
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-              Join utility operators, technical schools, and infrastructure investors working to preserve critical knowledge and accelerate climate adaptation.
+              We'll show you how Fluence captures your experts' knowledge and helps your crews handle complex repairs—even in emergencies.
             </p>
 
-            {/* Who should reach out */}
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-lg border border-border bg-background/50 p-4">
-                <h3 className="font-semibold text-foreground text-sm mb-2">For Operators</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Deploy Fluence with your crews to reduce restoration times and preserve expert knowledge.
-                </p>
+            {/* What you'll get */}
+            <div className="mt-8 space-y-3">
+              <div className="flex items-start gap-3">
+                <svg className="h-5 w-5 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-sm text-muted-foreground">See how Fluence works with your specific equipment and procedures</span>
               </div>
-              <div className="rounded-lg border border-border bg-background/50 p-4">
-                <h3 className="font-semibold text-foreground text-sm mb-2">For Investors</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Partner with us to scale operational intelligence across critical infrastructure.
-                </p>
+              <div className="flex items-start gap-3">
+                <svg className="h-5 w-5 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-sm text-muted-foreground">Understand what it takes to get started with your team</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <svg className="h-5 w-5 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-sm text-muted-foreground">Get answers to your specific questions about safety, data, and implementation</span>
               </div>
             </div>
           </div>
@@ -67,7 +85,7 @@ export function Footer() {
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">Thanks for reaching out!</h3>
                 <p className="text-sm text-muted-foreground">
-                  We'll be in touch within 24 hours to discuss how Fluence can support your infrastructure operations.
+                  We'll be in touch within 24 hours to schedule a demo and answer your questions.
                 </p>
               </div>
             ) : (
@@ -114,11 +132,10 @@ export function Footer() {
                     disabled={isPending}
                   >
                     <option value="">Select an option</option>
-                    <option value="pilot">Piloting Fluence with our crews</option>
-                    <option value="investment">Investment opportunities</option>
-                    <option value="partnership">Strategic partnership</option>
-                    <option value="advisory">Advisory / Technical expertise</option>
-                    <option value="other">Other</option>
+                    <option value="demo">Schedule a demo</option>
+                    <option value="pilot">Start a pilot with my team</option>
+                    <option value="questions">Ask technical questions</option>
+                    <option value="other">Something else</option>
                   </select>
                 </div>
                 <button
@@ -146,47 +163,18 @@ export function Footer() {
 
       <div className="border-t border-border bg-background">
         <div className="mx-auto max-w-5xl px-6 py-8 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div>
-              <p className="text-sm font-semibold text-foreground">Fluence</p>
-              <p className="text-xs text-muted-foreground mt-1">Operational intelligence for critical infrastructure</p>
+          <div className="flex flex-col items-center gap-4">
+            <div className="flex items-center gap-3">
+              <Logo className="h-8 w-8" />
+              <div>
+                <p className="text-sm font-semibold text-foreground">Fluence</p>
+                <p className="text-xs text-muted-foreground">Helping infrastructure crews solve complex problems faster</p>
+              </div>
             </div>
-            <nav className="flex gap-6 text-sm" aria-label="Footer navigation">
-              <Link
-                href="#problem"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Problem
-              </Link>
-              <Link
-                href="#solution"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Solution
-              </Link>
-              <Link
-                href="#how-it-works"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                How It Works
-              </Link>
-              <Link
-                href="#impact"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Impact
-              </Link>
-              <Link
-                href="#pilot"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Deploy
-              </Link>
-            </nav>
           </div>
           <div className="mt-6 pt-6 border-t border-border/50">
             <p className="text-xs text-muted-foreground text-center">
-              © 2026 Fluence. Building workforce resilience for climate-stressed infrastructure.
+              © 2026 Fluence.
             </p>
           </div>
         </div>

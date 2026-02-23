@@ -2,10 +2,14 @@
 
 import Link from "next/link";
 import { FlowDiagram } from "./illustrations/FlowDiagram";
+import { ParticleBackground } from "./ParticleBackground";
 
 export function Hero() {
   return (
     <header className="relative overflow-hidden pt-32 pb-24 sm:pt-40 sm:pb-32">
+      {/* Particle network background */}
+      <ParticleBackground />
+
       {/* Animated mesh gradient background */}
       <div className="absolute inset-0 -z-10 gradient-mesh opacity-50" />
       <div className="absolute inset-0 -z-10 dot-pattern opacity-30" />
@@ -20,14 +24,14 @@ export function Hero() {
           <div className="stagger">
             <div className="mb-8 inline-flex items-center rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5 text-xs font-medium text-accent backdrop-blur-sm glow-accent">
               <span className="mr-2 h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-              Now deploying in Brazil
+              For Water & Sanitation Operators
             </div>
 
             <h1 className="text-5xl font-semibold tracking-tight text-foreground sm:text-6xl md:text-7xl text-balance leading-[1.1]">
-              Your expert's knowledge,
+              AI guidance for
               <br />
               <span className="relative inline-block text-accent">
-                available to every crew.
+                infrastructure crews
                 <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 300 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0 4 Q150 8 300 4" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.3" />
                 </svg>
@@ -35,22 +39,34 @@ export function Hero() {
             </h1>
 
             <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-2xl text-balance">
-              Fluence trains water infrastructure crews in real-time—guiding them through complex repairs during floods, outages, and equipment failures when expert help isn't available.
+              Give your technicians step-by-step guidance during repairs. Fluence is like having your best expert on every job, available 24/7.
             </p>
 
-            {/* Quick stats */}
-            <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-xl">
-              <div className="flex flex-col card-hover rounded-lg border border-border bg-surface/50 p-4 backdrop-blur-sm">
-                <span className="text-3xl font-semibold text-accent">700K</span>
-                <span className="text-xs text-muted-foreground mt-1">workers needed by 2033</span>
+            {/* Quick value props */}
+            <div className="mt-10 space-y-3 max-w-xl">
+              <div className="flex items-center gap-3">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                  <svg className="h-4 w-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="text-foreground">Train new technicians in weeks, not years</span>
               </div>
-              <div className="flex flex-col card-hover rounded-lg border border-border bg-surface/50 p-4 backdrop-blur-sm">
-                <span className="text-3xl font-semibold text-accent">2x</span>
-                <span className="text-xs text-muted-foreground mt-1">faster crew onboarding</span>
+              <div className="flex items-center gap-3">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                  <svg className="h-4 w-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="text-foreground">Handle emergencies faster with real-time support</span>
               </div>
-              <div className="flex flex-col card-hover rounded-lg border border-border bg-surface/50 p-4 backdrop-blur-sm col-span-2 sm:col-span-1">
-                <span className="text-3xl font-semibold text-accent">40%</span>
-                <span className="text-xs text-muted-foreground mt-1">reduction in restoration time</span>
+              <div className="flex items-center gap-3">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                  <svg className="h-4 w-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="text-foreground">Never lose knowledge when experts retire</span>
               </div>
             </div>
 
@@ -68,7 +84,7 @@ export function Hero() {
                 href="#contact"
                 className="inline-flex items-center justify-center rounded-lg border border-border bg-surface/50 px-6 py-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-all hover:border-accent/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-border focus:ring-offset-2 focus:ring-offset-background"
               >
-                Request access
+                Request a demo
               </Link>
             </div>
           </div>
@@ -106,7 +122,7 @@ export function Hero() {
                     <svg className="h-4 w-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
-                    <span className="text-xs font-medium text-foreground">40% Faster</span>
+                    <span className="text-xs font-medium text-foreground">Works Offline</span>
                   </div>
                 </div>
               </div>

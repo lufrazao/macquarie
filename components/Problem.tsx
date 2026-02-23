@@ -1,26 +1,46 @@
+"use client";
+
 import { Section, SectionTitle, SectionLead } from "./Section";
+import { CrisisIcon } from "./illustrations/CrisisIcon";
+import { AnimatedCounter } from "./AnimatedCounter";
 
 export function Problem() {
   return (
-    <Section id="problem">
-      <SectionTitle>The Knowledge Transfer Crisis</SectionTitle>
-      <SectionLead>
-        Brazil needs 700,000 new sanitation workers by 2033 while extreme weather events accelerate infrastructure failures. But critical expertise is trapped in the minds of retiring technicians—and when they leave, decades of hard-won knowledge disappears.
-      </SectionLead>
+    <Section id="problem" className="relative">
+      {/* Background pattern */}
+      <div className="absolute inset-0 -z-10 grid-pattern opacity-20" />
 
-      {/* Visual impact stat */}
-      <div className="mt-12 rounded-2xl border border-red-900/20 bg-gradient-to-br from-red-950/20 to-orange-950/10 p-8 sm:p-12">
+      <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+        <div>
+          <SectionTitle>The Knowledge Transfer Crisis</SectionTitle>
+          <SectionLead>
+            Brazil needs 700,000 new sanitation workers by 2033 while extreme weather events accelerate infrastructure failures. But critical expertise is trapped in the minds of retiring technicians—and when they leave, decades of hard-won knowledge disappears.
+          </SectionLead>
+        </div>
+        <div className="hidden lg:block">
+          <CrisisIcon className="w-full h-auto max-w-md mx-auto" />
+        </div>
+      </div>
+
+      {/* Visual impact stat with animated counters */}
+      <div className="mt-12 rounded-2xl border border-red-900/20 bg-gradient-to-br from-red-950/20 to-orange-950/10 p-8 sm:p-12 card-hover">
         <div className="grid gap-8 sm:grid-cols-3 text-center">
           <div className="flex flex-col items-center">
-            <div className="text-4xl sm:text-5xl font-bold text-red-400 mb-2">8hrs+</div>
+            <div className="text-4xl sm:text-5xl font-bold text-red-400 mb-2">
+              <AnimatedCounter end={8} suffix="hrs+" />
+            </div>
             <div className="text-sm text-muted-foreground">Average restoration time without expert guidance</div>
           </div>
           <div className="flex flex-col items-center">
-            <div className="text-4xl sm:text-5xl font-bold text-orange-400 mb-2">65%</div>
+            <div className="text-4xl sm:text-5xl font-bold text-orange-400 mb-2">
+              <AnimatedCounter end={65} suffix="%" />
+            </div>
             <div className="text-sm text-muted-foreground">Of senior technicians retiring by 2030</div>
           </div>
           <div className="flex flex-col items-center">
-            <div className="text-4xl sm:text-5xl font-bold text-yellow-400 mb-2">3–5yrs</div>
+            <div className="text-4xl sm:text-5xl font-bold text-yellow-400 mb-2">
+              <AnimatedCounter end={3} suffix="–5yrs" />
+            </div>
             <div className="text-sm text-muted-foreground">Traditional training time for complex repairs</div>
           </div>
         </div>

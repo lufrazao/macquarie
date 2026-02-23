@@ -5,11 +5,10 @@ import Link from "next/link";
 import { Logo } from "./Logo";
 
 const navigation = [
-  { name: "Problem", href: "#problem" },
+  { name: "Who It's For", href: "#who" },
   { name: "Solution", href: "#solution" },
   { name: "How It Works", href: "#how-it-works" },
-  { name: "Impact", href: "#impact" },
-  { name: "Deploy", href: "#pilot" },
+  { name: "Benefits", href: "#impact" },
   { name: "FAQ", href: "#faq" },
 ];
 
