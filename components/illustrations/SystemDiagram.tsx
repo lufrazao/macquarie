@@ -2,17 +2,18 @@ export function SystemDiagram({ className = "" }: { className?: string }) {
   return (
     <svg
       className={className}
-      viewBox="0 0 400 400"
+      viewBox="0 0 500 500"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <linearGradient id="systemGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#2dd4bf" />
-          <stop offset="100%" stopColor="#14b8a6" />
+        <linearGradient id="triGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#2dd4bf" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="#14b8a6" stopOpacity="0.2" />
         </linearGradient>
-        <filter id="systemGlow">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+        
+        <filter id="glow-soft">
+          <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
           <feMerge>
             <feMergeNode in="coloredBlur"/>
             <feMergeNode in="SourceGraphic"/>
@@ -20,70 +21,112 @@ export function SystemDiagram({ className = "" }: { className?: string }) {
         </filter>
       </defs>
 
-      {/* Central AI core */}
-      <g className="animate-pulse-slow">
-        <circle cx="200" cy="200" r="40" fill="#18181b" stroke="url(#systemGradient)" strokeWidth="3" filter="url(#systemGlow)" />
-        <circle cx="200" cy="200" r="28" fill="none" stroke="#2dd4bf" strokeWidth="1" opacity="0.3" className="animate-pulse" />
-        <circle cx="200" cy="200" r="20" fill="none" stroke="#2dd4bf" strokeWidth="1" opacity="0.5" className="animate-pulse" style={{ animationDelay: "0.5s" }} />
+      {/* --- CONNECTING LINES (The Cycle) --- */}
+      <path 
+        d="M 250 140 L 400 320" 
+        stroke="#27272a" 
+        strokeWidth="2" 
+        strokeDasharray="4 4" 
+      />
+      <path 
+        d="M 400 320 L 100 320" 
+        stroke="#27272a" 
+        strokeWidth="2" 
+        strokeDasharray="4 4" 
+      />
+      <path 
+        d="M 100 320 L 250 140" 
+        stroke="#27272a" 
+        strokeWidth="2" 
+        strokeDasharray="4 4" 
+      />
 
-        {/* Core symbol */}
-        <circle cx="195" cy="195" r="3" fill="#2dd4bf" />
-        <circle cx="205" cy="195" r="3" fill="#2dd4bf" />
-        <circle cx="195" cy="205" r="3" fill="#2dd4bf" />
-        <circle cx="205" cy="205" r="3" fill="#2dd4bf" />
-        <circle cx="200" cy="200" r="3" fill="#14b8a6" className="animate-pulse" />
+      {/* Animated Flow Particles on the lines */}
+      <circle r="3" fill="#2dd4bf">
+        <animateMotion 
+          dur="3s" 
+          repeatCount="indefinite"
+          path="M 250 140 L 400 320 L 100 320 Z"
+        />
+      </circle>
+      <circle r="3" fill="#14b8a6" opacity="0.6">
+        <animateMotion 
+          dur="3s" 
+          begin="1s"
+          repeatCount="indefinite"
+          path="M 250 140 L 400 320 L 100 320 Z"
+        />
+      </circle>
+
+      {/* --- NODE 1: KNOWLEDGE CAPTURE (Top) --- */}
+      <g transform="translate(250, 100)">
+        <circle cx="0" cy="0" r="40" fill="#18181b" stroke="#2dd4bf" strokeWidth="2" filter="url(#glow-soft)" />
+        <circle cx="0" cy="0" r="32" fill="#18181b" stroke="#2dd4bf" strokeWidth="1" opacity="0.5" />
+        
+        {/* Icon: Funnel/Ingest */}
+        <path d="M -15 -15 L 15 -15 L 5 5 L 5 15 L -5 15 L -5 5 Z" stroke="#e2e8f0" strokeWidth="2" fill="none" />
+        <line x1="-10" y1="-25" x2="-5" y2="-15" stroke="#2dd4bf" strokeWidth="2" strokeLinecap="round" />
+        <line x1="0" y1="-25" x2="0" y2="-15" stroke="#2dd4bf" strokeWidth="2" strokeLinecap="round" />
+        <line x1="10" y1="-25" x2="5" y2="-15" stroke="#2dd4bf" strokeWidth="2" strokeLinecap="round" />
+
+        <text x="0" y="60" textAnchor="middle" fill="#e2e8f0" fontSize="14" fontWeight="600">Knowledge Capture</text>
       </g>
 
-      {/* Orbital nodes - Knowledge Capture */}
-      <g className="animate-float">
-        <circle cx="120" cy="120" r="25" fill="#27272a" stroke="#2dd4bf" strokeWidth="2" filter="url(#systemGlow)" />
-        <path d="M 115 115 L 120 122 L 125 115" stroke="#2dd4bf" strokeWidth="2" fill="none" strokeLinecap="round" />
-        <text x="120" y="165" fontSize="10" fill="#a1a1aa" textAnchor="middle" fontWeight="500">Capture</text>
+      {/* --- NODE 2: CONTEXTUAL REASONING (Bottom Right) --- */}
+      <g transform="translate(400, 360)">
+        <circle cx="0" cy="0" r="40" fill="#18181b" stroke="#2dd4bf" strokeWidth="2" filter="url(#glow-soft)" />
+        <circle cx="0" cy="0" r="32" fill="#18181b" stroke="#2dd4bf" strokeWidth="1" opacity="0.5" />
+        
+        {/* Icon: Network/Brain */}
+        <circle cx="0" cy="-10" r="3" fill="#2dd4bf" />
+        <circle cx="-10" cy="5" r="3" fill="#2dd4bf" />
+        <circle cx="10" cy="5" r="3" fill="#2dd4bf" />
+        <line x1="0" y1="-10" x2="-10" y2="5" stroke="#e2e8f0" strokeWidth="1.5" />
+        <line x1="0" y1="-10" x2="10" y2="5" stroke="#e2e8f0" strokeWidth="1.5" />
+        <line x1="-10" y1="5" x2="10" y2="5" stroke="#e2e8f0" strokeWidth="1.5" />
+
+        <text x="0" y="60" textAnchor="middle" fill="#e2e8f0" fontSize="14" fontWeight="600">Contextual Reasoning</text>
       </g>
 
-      {/* Orbital nodes - Contextual Matching */}
-      <g className="animate-float" style={{ animationDelay: "1s" }}>
-        <circle cx="280" cy="120" r="25" fill="#27272a" stroke="#2dd4bf" strokeWidth="2" filter="url(#systemGlow)" />
-        <rect x="270" y="112" width="7" height="7" fill="none" stroke="#2dd4bf" strokeWidth="1.5" />
-        <rect x="278" y="112" width="7" height="7" fill="none" stroke="#2dd4bf" strokeWidth="1.5" />
-        <rect x="270" y="120" width="7" height="7" fill="none" stroke="#2dd4bf" strokeWidth="1.5" />
-        <rect x="278" y="120" width="7" height="7" fill="#2dd4bf" />
-        <text x="280" y="165" fontSize="10" fill="#a1a1aa" textAnchor="middle" fontWeight="500">Match</text>
+      {/* --- NODE 3: CONTINUOUS LEARNING (Bottom Left) --- */}
+      <g transform="translate(100, 360)">
+        <circle cx="0" cy="0" r="40" fill="#18181b" stroke="#14b8a6" strokeWidth="2" filter="url(#glow-soft)" />
+        <circle cx="0" cy="0" r="32" fill="#18181b" stroke="#14b8a6" strokeWidth="1" opacity="0.5" />
+        
+        {/* Icon: Growth/Loop */}
+        <path d="M -15 10 L -5 0 L 5 10 L 15 -5" stroke="#e2e8f0" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M 15 -5 L 10 -5 M 15 -5 L 15 0" stroke="#e2e8f0" strokeWidth="2" strokeLinecap="round" />
+
+        <text x="0" y="60" textAnchor="middle" fill="#e2e8f0" fontSize="14" fontWeight="600">Continuous Learning</text>
       </g>
 
-      {/* Orbital nodes - Guided Execution */}
-      <g className="animate-float" style={{ animationDelay: "2s" }}>
-        <circle cx="280" cy="280" r="25" fill="#27272a" stroke="#14b8a6" strokeWidth="2" filter="url(#systemGlow)" />
-        <path d="M 275 275 L 280 280 L 285 275 M 275 282 L 280 287 L 285 282" stroke="#14b8a6" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        <text x="280" y="320" fontSize="10" fill="#a1a1aa" textAnchor="middle" fontWeight="500">Execute</text>
+      {/* --- CENTRAL CORE --- */}
+      <g transform="translate(250, 260)">
+        <circle cx="0" cy="0" r="30" fill="#2dd4bf" fillOpacity="0.1" stroke="#2dd4bf" strokeWidth="1" className="animate-pulse" />
+        
+        {/* Fluence Logo Icon */}
+        <g transform="translate(-15, -15) scale(0.75)">
+           <path
+            d="M20 4C20 4 10 14 10 22C10 27.5228 14.4772 32 20 32C25.5228 32 30 27.5228 30 22C30 14 20 4 20 4Z"
+            fill="#2dd4bf"
+          />
+          <path
+            d="M16 18C16 18 17 16 20 16C23 16 24 18 24 18"
+            stroke="#18181b"
+            strokeWidth="2"
+            strokeLinecap="round"
+            opacity="0.5"
+          />
+          <path
+            d="M15 22C15 22 16.5 20 20 20C23.5 20 25 22 25 22"
+            stroke="#18181b"
+            strokeWidth="2"
+            strokeLinecap="round"
+            opacity="0.6"
+          />
+        </g>
       </g>
-
-      {/* Orbital nodes - Competency Tracking */}
-      <g className="animate-float" style={{ animationDelay: "3s" }}>
-        <circle cx="120" cy="280" r="25" fill="#27272a" stroke="#14b8a6" strokeWidth="2" filter="url(#systemGlow)" />
-        <path d="M 112 280 Q 120 275 128 280" stroke="#14b8a6" strokeWidth="2" fill="none" />
-        <circle cx="116" cy="282" r="1.5" fill="#14b8a6" />
-        <circle cx="120" cy="281" r="1.5" fill="#14b8a6" />
-        <circle cx="124" cy="282" r="1.5" fill="#14b8a6" />
-        <text x="120" y="320" fontSize="10" fill="#a1a1aa" textAnchor="middle" fontWeight="500">Track</text>
-      </g>
-
-      {/* Connection lines with flow animation */}
-      <g opacity="0.4">
-        <path d="M 145 138 L 175 180" stroke="url(#systemGradient)" strokeWidth="2" strokeDasharray="4 4" className="animate-pulse-slow" />
-        <path d="M 255 138 L 225 180" stroke="url(#systemGradient)" strokeWidth="2" strokeDasharray="4 4" className="animate-pulse-slow" style={{ animationDelay: "0.5s" }} />
-        <path d="M 255 262 L 225 220" stroke="url(#systemGradient)" strokeWidth="2" strokeDasharray="4 4" className="animate-pulse-slow" style={{ animationDelay: "1s" }} />
-        <path d="M 145 262 L 175 220" stroke="url(#systemGradient)" strokeWidth="2" strokeDasharray="4 4" className="animate-pulse-slow" style={{ animationDelay: "1.5s" }} />
-      </g>
-
-      {/* Data flow particles */}
-      <circle cx="160" cy="159" r="2" fill="#2dd4bf" className="animate-pulse" />
-      <circle cx="240" cy="159" r="2" fill="#2dd4bf" className="animate-pulse" style={{ animationDelay: "0.3s" }} />
-      <circle cx="240" cy="241" r="2" fill="#14b8a6" className="animate-pulse" style={{ animationDelay: "0.6s" }} />
-      <circle cx="160" cy="241" r="2" fill="#14b8a6" className="animate-pulse" style={{ animationDelay: "0.9s" }} />
-
-      {/* Outer ring */}
-      <circle cx="200" cy="200" r="150" stroke="#27272a" strokeWidth="1" fill="none" opacity="0.3" />
+      
     </svg>
   );
 }

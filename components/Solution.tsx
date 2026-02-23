@@ -1,4 +1,6 @@
 import { Section, SectionTitle, SectionLead } from "./Section";
+import { FlowDiagram } from "./illustrations/FlowDiagram";
+import { MobileSimulation } from "./illustrations/MobileSimulation";
 
 const definition =
   "Fluence is an AI copilot that captures expert knowledge and delivers real-time, contextual guidance to field crews—transforming decades of experience into actionable steps for any technician, regardless of skill level.";
@@ -8,118 +10,106 @@ export function Solution() {
     <Section id="solution">
       <SectionTitle>Your Expert's Brain, In Every Technician's Pocket</SectionTitle>
       <SectionLead>
-        Fluence is an AI copilot that learns from your best technicians and guides every crew member through complex repairs—delivering expert-level decision-making when and where it's needed most.
+        Fluence captures expert knowledge and delivers it as real-time guidance—so every technician can solve complex problems like a veteran.
       </SectionLead>
 
-      {/* Real scenario example */}
-      <div className="mt-12 rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/5 to-transparent p-8 sm:p-10">
-        <div className="flex items-start gap-4 mb-6">
-          <div className="rounded-lg bg-accent/20 p-2">
-            <svg className="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-            </svg>
-          </div>
-          <div className="flex-1">
-            <h3 className="text-lg font-semibold text-foreground mb-2">Example: Flooded Pump Station</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              A junior technician arrives at a flooded pump station at 3 AM during heavy rain. The control panel shows multiple error codes, but the senior engineer is 2 hours away.
-            </p>
-          </div>
+      {/* Visual flow diagram */}
+      <div className="mt-12 mb-16">
+        <FlowDiagram className="w-full h-auto max-w-3xl mx-auto" />
+      </div>
+
+      {/* Scenario with visual mockup */}
+      <div className="mt-16 grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
+        {/* Phone mockup */}
+        <div className="order-2 lg:order-1 flex justify-center">
+          <MobileSimulation className="w-full max-w-xs" />
         </div>
 
-        <div className="space-y-4 ml-0 sm:ml-14">
-          <div className="flex gap-3 items-start">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-xs font-semibold text-background">1</span>
-            <p className="text-sm text-foreground pt-0.5">
-              <strong>Fluence identifies the context:</strong> Flooded control box + power fluctuations + error code E7-312
-            </p>
+        {/* Text content */}
+        <div className="order-1 lg:order-2 space-y-6">
+          <div className="inline-block rounded-lg bg-accent/10 px-3 py-1">
+            <span className="text-xs font-medium text-accent">Real Scenario</span>
           </div>
-          <div className="flex gap-3 items-start">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-xs font-semibold text-background">2</span>
-            <p className="text-sm text-foreground pt-0.5">
-              <strong>Delivers expert protocol:</strong> "Don't restart yet. First, isolate power to Zone B. Check sensor S4 for water ingress—it's behind the access panel on the left."
-            </p>
-          </div>
-          <div className="flex gap-3 items-start">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-xs font-semibold text-background">3</span>
-            <p className="text-sm text-foreground pt-0.5">
-              <strong>Guides the repair:</strong> Step-by-step instructions with safety warnings, photos, and verification checkpoints
-            </p>
-          </div>
-          <div className="flex gap-3 items-start">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-xs font-semibold text-background">4</span>
-            <p className="text-sm text-foreground pt-0.5">
-              <strong>Tracks competency:</strong> Logs completion, validates quality, and identifies if additional training is needed
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-6 pt-6 border-t border-accent/20">
-          <p className="text-sm text-accent font-medium">
-            Result: 45-minute repair instead of 8+ hour outage. Zero safety incidents. Junior tech gains confidence for next time.
+          <h3 className="text-2xl font-semibold text-foreground">Flooded Pump Station at 3 AM</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            A junior technician arrives during heavy rain. Multiple error codes, senior engineer 2 hours away.
           </p>
+
+          <div className="space-y-4">
+            <div className="flex gap-3 items-start">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                <svg className="h-4 w-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-medium text-foreground text-sm">Context-aware guidance</p>
+                <p className="text-sm text-muted-foreground">Fluence analyzes the error code, conditions, and equipment to deliver the exact protocol needed</p>
+              </div>
+            </div>
+
+            <div className="flex gap-3 items-start">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                <svg className="h-4 w-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-medium text-foreground text-sm">Safety first</p>
+                <p className="text-sm text-muted-foreground">Every step includes safety checks and warnings validated by senior engineers</p>
+              </div>
+            </div>
+
+            <div className="flex gap-3 items-start">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                <svg className="h-4 w-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-medium text-foreground text-sm">45-minute fix, not 8+ hour outage</p>
+                <p className="text-sm text-muted-foreground">Junior tech solves it independently and gains confidence for next time</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
-        <div className="space-y-6">
-          <h3 className="text-xl font-semibold text-foreground">How Fluence Works</h3>
-          <ul className="space-y-5">
-            {[
-              {
-                label: "Captures Expert Knowledge",
-                desc: "Records how your best technicians diagnose and solve problems—including the unwritten rules and intuition they've developed over decades"
-              },
-              {
-                label: "Understands Context",
-                desc: "Analyzes field signals (error codes, symptoms, photos, location) to match the situation with relevant expert protocols"
-              },
-              {
-                label: "Delivers Adaptive Guidance",
-                desc: "Provides step-by-step instructions that adjust based on real-time feedback and changing conditions"
-              },
-              {
-                label: "Builds Competency",
-                desc: "Tracks what each crew member knows, identifies skill gaps, and creates personalized learning pathways"
-              },
-            ].map((feature) => (
-              <li key={feature.label} className="flex gap-4">
-                <div className="mt-1.5 h-2 w-2 rounded-full bg-accent shrink-0" />
-                <div>
-                  <div className="font-semibold text-foreground mb-1">{feature.label}</div>
-                  <div className="text-sm text-muted-foreground leading-relaxed">{feature.desc}</div>
-                </div>
-              </li>
-            ))}
-          </ul>
+      {/* What Makes Fluence Different */}
+      <div className="mt-20 max-w-4xl mx-auto">
+        <div className="text-center mb-8">
+          <span className="text-xs font-medium uppercase tracking-wider text-accent">What Makes Fluence Different</span>
         </div>
 
-        <div className="relative rounded-2xl border border-border bg-surface p-8 lg:sticky lg:top-8">
-          <div className="mb-6">
-            <span className="text-xs font-medium uppercase tracking-wider text-accent">What Makes Fluence Different</span>
+        <div className="grid gap-6 md:grid-cols-3">
+          <div className="rounded-2xl border border-border bg-surface p-6 text-center space-y-3 hover:border-accent/30 transition-all">
+            <div className="inline-flex rounded-lg bg-accent/10 p-3">
+              <svg className="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+            </div>
+            <h4 className="font-semibold text-foreground">Not a static manual</h4>
+            <p className="text-sm text-muted-foreground">Adapts to each situation and technician's skill level</p>
           </div>
-          <p className="text-lg text-foreground leading-relaxed mb-8">
-            "{definition}"
-          </p>
-          <div className="space-y-3 text-sm">
-            <div className="flex items-start gap-2">
-              <svg className="h-5 w-5 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+
+          <div className="rounded-2xl border border-border bg-surface p-6 text-center space-y-3 hover:border-accent/30 transition-all">
+            <div className="inline-flex rounded-lg bg-accent/10 p-3">
+              <svg className="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
-              <span className="text-muted-foreground">Not a static manual—adapts to each situation</span>
             </div>
-            <div className="flex items-start gap-2">
-              <svg className="h-5 w-5 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            <h4 className="font-semibold text-foreground">Not a chatbot</h4>
+            <p className="text-sm text-muted-foreground">Structured, verified protocols from your experts</p>
+          </div>
+
+          <div className="rounded-2xl border border-border bg-surface p-6 text-center space-y-3 hover:border-accent/30 transition-all">
+            <div className="inline-flex rounded-lg bg-accent/10 p-3">
+              <svg className="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              <span className="text-muted-foreground">Not a chatbot—structured, verified protocols</span>
             </div>
-            <div className="flex items-start gap-2">
-              <svg className="h-5 w-5 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span className="text-muted-foreground">Not a training course—embedded in daily work</span>
-            </div>
+            <h4 className="font-semibold text-foreground">Not a training course</h4>
+            <p className="text-sm text-muted-foreground">Embedded in daily work, learning by doing</p>
           </div>
         </div>
       </div>

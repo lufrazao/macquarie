@@ -94,7 +94,7 @@ export function UseCases() {
           {workforceImpact.map((item) => (
             <div
               key={item.title}
-              className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 transition-all hover:border-accent/30 hover:shadow-lg"
+              className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 transition-all hover:border-accent/30 hover:shadow-lg flex flex-col"
             >
               <div className="mb-4">
                 <div className="inline-flex rounded-lg bg-accent/10 p-2 mb-3">
@@ -104,10 +104,10 @@ export function UseCases() {
                 </div>
                 <h4 className="font-semibold text-foreground text-lg">{item.title}</h4>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-grow">
                 {item.outcome}
               </p>
-              <div className="rounded-lg bg-accent/5 border border-accent/20 px-3 py-2">
+              <div className="rounded-lg bg-accent/5 border border-accent/20 px-3 py-2 mt-auto">
                 <p className="text-xs font-medium text-accent">{item.metric}</p>
               </div>
             </div>

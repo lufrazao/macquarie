@@ -24,14 +24,14 @@ export function Hero() {
           <div className="stagger">
             <div className="mb-8 inline-flex items-center rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5 text-xs font-medium text-accent backdrop-blur-sm glow-accent">
               <span className="mr-2 h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-              For Water & Sanitation Operators
+              Context-Aware Support for Water & Sanitation Operators
             </div>
 
             <h1 className="text-5xl font-semibold tracking-tight text-foreground sm:text-6xl md:text-7xl text-balance leading-[1.1]">
-              AI guidance for
+              Adaptive training
               <br />
               <span className="relative inline-block text-accent">
-                infrastructure crews
+                for infrastructure crews
                 <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 300 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0 4 Q150 8 300 4" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.3" />
                 </svg>
@@ -93,38 +93,8 @@ export function Hero() {
           <div className="relative hidden lg:block">
             <div className="relative">
               {/* Main illustration */}
-              <div className="animate-scale-in">
-                <FlowDiagram className="w-full h-auto drop-shadow-2xl" />
-              </div>
-
-              {/* Floating badges */}
-              <div className="absolute -top-8 -left-8 animate-float">
-                <div className="rounded-xl border border-accent/30 bg-surface/90 backdrop-blur-sm p-3 shadow-xl">
-                  <div className="flex items-center gap-2">
-                    <div className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                    <span className="text-xs font-medium text-foreground">Knowledge Capture</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute -bottom-8 -right-8 animate-float" style={{ animationDelay: "1s" }}>
-                <div className="rounded-xl border border-accent/30 bg-surface/90 backdrop-blur-sm p-3 shadow-xl">
-                  <div className="flex items-center gap-2">
-                    <div className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                    <span className="text-xs font-medium text-foreground">Real-time Guidance</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute top-1/2 -right-12 animate-float" style={{ animationDelay: "2s" }}>
-                <div className="rounded-xl border border-accent/30 bg-surface/90 backdrop-blur-sm p-3 shadow-xl">
-                  <div className="flex items-center gap-2">
-                    <svg className="h-4 w-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                    <span className="text-xs font-medium text-foreground">Works Offline</span>
-                  </div>
-                </div>
+              <div className="animate-scale-in flex justify-center">
+                <FlowDiagram className="w-full max-w-2xl h-auto drop-shadow-2xl" />
               </div>
             </div>
           </div>
